@@ -11,7 +11,7 @@ function App() {
 axios.defaults.withCredentials = true;
 const handleLogin = (e) => {
   e.preventDefault();
-  axios.post('http://localhost:3001/login', { email, password })
+  axios.post('https://weather-mern-backend.vercel.app/login', { email, password })
     .then(result => {
       console.log(result.data);
       // Redirect to another webpage on successful login
@@ -21,7 +21,7 @@ const handleLogin = (e) => {
 };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/register', {name, email, password})
+    axios.post('https://weather-mern-backend.vercel.app/register', {name, email, password})
     .then(result => console.log(result))
     .catch(err => console.log(err))
   }
