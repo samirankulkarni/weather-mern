@@ -25,11 +25,13 @@ app.post('/register', (req, res) => {
     RegisterModel.findOne({email: email})
     .then(user => {
         if(user) {
-            res.json("Already have an account")
+            res.json("Already have an account");
+            alert("already have account");
         } else {
             RegisterModel.create({name: name, email: email, password: password})
             .then(result => res.json(result))
             .catch(err => res.json(err))
+            alert("registered")
         }
     }).catch(err => res.json(err))
 })
@@ -42,9 +44,11 @@ app.post('/login', (req, res) => {
             if (user) {
                 // Authentication successful
                 res.json("Login successful");
+                
             } else {
                 // User not found or password incorrect
                 res.status(401).json("Invalid credentials");
+                alert("Incorrect credentials");
             }
         })
         .catch(err => res.status(500).json(err));
